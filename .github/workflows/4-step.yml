@@ -76,6 +76,13 @@ jobs:
             exit 1
           fi
 
+      - name: Run pytest suite
+        id: run-pytests
+        continue-on-error: true
+        run: |
+          python -m pip install -r requirements.txt
+          pytest -q
+
       - name: Update comment - step results
         uses: GrantBirki/comment@v2.1.1
         with:
